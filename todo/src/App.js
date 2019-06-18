@@ -12,17 +12,17 @@ export class App extends React.Component {
 	todoRef = React.createRef();
 
 	onAddTodo = () => {
-		console.log(this.todoRef.current.value);
+		// console.log(this.todoRef.current.value);
 		this.props.addTodo(this.todoRef.current.value);
 	};
 
 	render() {
-		console.log(this.props.todos);
+		// console.log(this.props.todos);
 		// console.log(this.todoRef.current.value);
 		return (
 			<div>
 				<h3>My Todos List:</h3>
-				<Container array={this.props.todos} />
+				<Container array={this.props.todos} cb={this.props.toggleCompleted} />
 				<div>
 					<input type="text" placeholder="add todo" ref={this.todoRef} />
 					<button onClick={this.onAddTodo}>Add Todo</button>
