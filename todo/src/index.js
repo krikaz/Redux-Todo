@@ -1,6 +1,9 @@
 import React from 'react';
+import App from './App';
 import ReactDOM from 'react-dom';
+
 import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 // step 1 - only one state - todos arrays
 
