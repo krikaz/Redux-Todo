@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 // step 2 - action types
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
+export const DELETE_TODO = 'DELETE_TODO';
 
 // const testData = [
 // 	{
@@ -31,6 +32,8 @@ function todosReducer(state = [], action) {
 				}
 				return todo;
 			});
+		case DELETE_TODO:
+			return state.filter(todo => todo.id !== action.payload);
 		default:
 			return state;
 	}
@@ -68,4 +71,11 @@ export function toggleCompleted(id) {
 		type: TOGGLE_COMPLETED,
 		payload: id,
 	};
+}
+
+export function deleteTodo(id) {
+  return {
+    type: DELETE_TODO,
+    payload: id,
+  }
 }

@@ -3,7 +3,7 @@ import Container from './Container';
 import { connect } from 'react-redux';
 
 // STEP 8: HERE ARE THE NEEDED ACTION DISPATCHERS
-import { addTodo, toggleCompleted } from './index';
+import { addTodo, toggleCompleted, deleteTodo } from './index';
 
 export class App extends React.Component {
 	// STEP 11: WE GET THE SLICES OF STATE FROM PROPS
@@ -11,9 +11,10 @@ export class App extends React.Component {
 
 	todoRef = React.createRef();
 
-	onAddTodo = () => {
+	onAddTodo = (e) => {
 		// console.log(this.todoRef.current.value);
-		this.props.addTodo(this.todoRef.current.value);
+    this.props.addTodo(this.todoRef.current.value);
+    // e.target.placeholder = '';
 	};
 
 	render() {
@@ -22,7 +23,11 @@ export class App extends React.Component {
 		return (
 			<div>
 				<h3>My Todos List:</h3>
-				<Container array={this.props.todos} cb={this.props.toggleCompleted} />
+				<Container
+					array={this.props.todos}
+					toggleCompleted={this.props.toggleCompleted}
+					deleteTodo={this.props.deleteTodo}
+				/>
 				<div>
 					<input type="text" placeholder="add todo" ref={this.todoRef} />
 					<button onClick={this.onAddTodo}>Add Todo</button>
@@ -43,5 +48,5 @@ export default connect(
 	// STEP 10: CONNECT THE COMPONENT PASSING MAP STATE TO PROPS AS 1ST ARG
 	mapStateToProps,
 	// STEP 12: INJECT THE ACTION DISPATCHERS AS 2ND ARG TO CONNECT
-	{ addTodo, toggleCompleted }
+	{ addTodo, toggleCompleted, deleteTodo }
 )(App);
