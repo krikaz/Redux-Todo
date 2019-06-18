@@ -22,9 +22,7 @@ export class App extends React.Component {
 		return (
 			<div>
 				<h3>My Todos List:</h3>
-				<div>
-					<Container array={this.props.todos} />
-				</div>
+				<Container array={this.props.todos} />
 				<div>
 					<input type="text" placeholder="add todo" ref={this.todoRef} />
 					<button onClick={this.onAddTodo}>Add Todo</button>
