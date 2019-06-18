@@ -14,8 +14,6 @@ const StyledSpan = styled.span`
 `;
 
 export default class Container extends React.Component {
-	// idRef = React.createRef();
-
 	onTodoClicked = e => {
 		// console.log(e.target.id);
 		this.props.toggleCompleted(e.target.id);

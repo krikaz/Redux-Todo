@@ -23,15 +23,6 @@ export class App extends React.Component {
 		myStorage.setItem('state', JSON.stringify(this.props.todos));
 	};
 
-	// LoadList = () => {
-	//   const loaded = myStorage.getItem('state');
-	//   this.props.todos = JSON.parse(loaded);
-	// }
-
-	// componentDidMount() {
-	//   this.LoadList();
-	// }
-
 	render() {
 		// console.log(this.props.todos);
 		// console.log(this.todoRef.current.value);
