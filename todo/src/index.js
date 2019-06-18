@@ -11,15 +11,22 @@ import { Provider } from 'react-redux';
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 
+const testData = [
+	{
+		value: 'finish main goal',
+		completed: false,
+	},
+];
+
 // STEP 3: BUILD ONE REDUCER PER STATE SLICE
-function todosReducer(state = { todos: [] }, action) {
+function todosReducer(state = testData, action) {
 	switch (action.type) {
 		case ADD_TODO:
-			return [...state.todos, action.payload];
+			return [...state, action.payload];
 		case TOGGLE_COMPLETED:
-			return state.todos.map(todo => {
+			return state.map(todo => {
 				if (todo.value === action.payload) {
-					return { ...todo, completed: true };
+					return { ...todo, completed: !todo.completed };
 				}
 				return todo;
 			});
@@ -48,9 +55,10 @@ ReactDOM.render(
 );
 
 // STEP 7: CREATE ACTION DISPATCHER FUNCTIONS
-export function addTodo() {
+export function addTodo(todo) {
 	return {
 		type: ADD_TODO,
+		payload: { value: todo, completed: false },
 	};
 }
 

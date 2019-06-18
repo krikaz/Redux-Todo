@@ -1,4 +1,5 @@
 import React from 'react';
+import Container from './Container';
 import { connect } from 'react-redux';
 
 // STEP 8: HERE ARE THE NEEDED ACTION DISPATCHERS
@@ -8,15 +9,25 @@ export class App extends React.Component {
 	// STEP 11: WE GET THE SLICES OF STATE FROM PROPS
 	// STEP 13: WE GET THE ACTION DISPATCHERS FROM PROPS
 
+	todoRef = React.createRef();
+
+	onAddTodo = () => {
+		console.log(this.todoRef.current.value);
+		this.props.addTodo(this.todoRef.current.value);
+	};
+
 	render() {
 		console.log(this.props.todos);
+		// console.log(this.todoRef.current.value);
 		return (
 			<div>
 				<h3>My Todos List:</h3>
 				<div>
-					{this.props.todos.map(todo => (
-						<div>{todo}</div>
-					))}
+					<Container array={this.props.todos} />
+				</div>
+				<div>
+					<input type="text" placeholder="add todo" ref={this.todoRef} />
+					<button onClick={this.onAddTodo}>Add Todo</button>
 				</div>
 			</div>
 		);
