@@ -5,17 +5,32 @@ import { connect } from 'react-redux';
 // STEP 8: HERE ARE THE NEEDED ACTION DISPATCHERS
 import { addTodo, toggleCompleted, deleteTodo } from './index';
 
+const myStorage = window.localStorage;
+
 export class App extends React.Component {
 	// STEP 11: WE GET THE SLICES OF STATE FROM PROPS
 	// STEP 13: WE GET THE ACTION DISPATCHERS FROM PROPS
 
 	todoRef = React.createRef();
 
-	onAddTodo = e => {
+	onAddTodo = () => {
 		// console.log(this.todoRef.current.value);
-		this.props.addTodo(this.todoRef.current.value);
-		console.log(e.target);
-	};
+    this.props.addTodo(this.todoRef.current.value);
+  };
+  
+  SaveList = () => {
+    console.log(this.props.todos);
+    myStorage.setItem('state', JSON.stringify(this.props.todos));
+  }
+
+  // LoadList = () => {
+  //   const loaded = myStorage.getItem('state');
+  //   this.props.todos = JSON.parse(loaded);
+  // }
+
+  // componentDidMount() {
+  //   this.LoadList();
+  // }
 
 	render() {
 		// console.log(this.props.todos);
@@ -32,6 +47,8 @@ export class App extends React.Component {
 					<input type="text" placeholder="add todo" ref={this.todoRef} />
 					<button onClick={this.onAddTodo}>Add Todo</button>
 				</div>
+
+        <button onClick={this.SaveList}>Save</button>
 			</div>
 		);
 	}
