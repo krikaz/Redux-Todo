@@ -9,7 +9,7 @@ export default class Container extends React.Component {
 	};
 
 	onDeleteTodoClicked = e => {
-		console.log(e.target.id);
+		// console.log(e.target.id);
 		this.props.deleteTodo(e.target.id);
 	};
 

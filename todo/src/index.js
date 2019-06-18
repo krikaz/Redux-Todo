@@ -13,15 +13,16 @@ export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 export const DELETE_TODO = 'DELETE_TODO';
 
-// const testData = [
-// 	{
-// 		value: 'finish main goal',
-// 		completed: false,
-// 	},
-// ];
+const testData = [
+	{
+		id: uuid(),
+		value: 'finish main goal',
+		completed: false,
+	},
+];
 
 // STEP 3: BUILD ONE REDUCER PER STATE SLICE
-function todosReducer(state = [], action) {
+function todosReducer(state = testData, action) {
 	switch (action.type) {
 		case ADD_TODO:
 			return [...state, action.payload];
@@ -74,8 +75,8 @@ export function toggleCompleted(id) {
 }
 
 export function deleteTodo(id) {
-  return {
-    type: DELETE_TODO,
-    payload: id,
-  }
+	return {
+		type: DELETE_TODO,
+		payload: id,
+	};
 }

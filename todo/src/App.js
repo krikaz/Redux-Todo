@@ -11,10 +11,10 @@ export class App extends React.Component {
 
 	todoRef = React.createRef();
 
-	onAddTodo = (e) => {
+	onAddTodo = e => {
 		// console.log(this.todoRef.current.value);
-    this.props.addTodo(this.todoRef.current.value);
-    // e.target.placeholder = '';
+		this.props.addTodo(this.todoRef.current.value);
+		console.log(e.target);
 	};
 
 	render() {
