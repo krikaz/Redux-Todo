@@ -15,22 +15,22 @@ export class App extends React.Component {
 
 	onAddTodo = () => {
 		// console.log(this.todoRef.current.value);
-    this.props.addTodo(this.todoRef.current.value);
-  };
-  
-  SaveList = () => {
-    console.log(this.props.todos);
-    myStorage.setItem('state', JSON.stringify(this.props.todos));
-  }
+		this.props.addTodo(this.todoRef.current.value);
+	};
 
-  // LoadList = () => {
-  //   const loaded = myStorage.getItem('state');
-  //   this.props.todos = JSON.parse(loaded);
-  // }
+	SaveList = () => {
+		// console.log(this.props.todos);
+		myStorage.setItem('state', JSON.stringify(this.props.todos));
+	};
 
-  // componentDidMount() {
-  //   this.LoadList();
-  // }
+	// LoadList = () => {
+	//   const loaded = myStorage.getItem('state');
+	//   this.props.todos = JSON.parse(loaded);
+	// }
+
+	// componentDidMount() {
+	//   this.LoadList();
+	// }
 
 	render() {
 		// console.log(this.props.todos);
@@ -48,7 +48,7 @@ export class App extends React.Component {
 					<button onClick={this.onAddTodo}>Add Todo</button>
 				</div>
 
-        <button onClick={this.SaveList}>Save</button>
+				<button onClick={this.SaveList}>Save</button>
 			</div>
 		);
 	}

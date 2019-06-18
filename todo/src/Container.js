@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledListItem = styled.li`
+	width: 50%;
+	padding: 0.5rem;
+
+	display: flex;
+	justify-content: space-between;
+`;
+
+const StyledSpan = styled.span`
+	text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
+`;
 
 export default class Container extends React.Component {
 	// idRef = React.createRef();
@@ -17,14 +30,18 @@ export default class Container extends React.Component {
 		return (
 			<ul>
 				{this.props.array.map(todo => (
-					<li key={todo.id}>
-						<span id={todo.id} onClick={this.onTodoClicked}>
-							{todo.value} {todo.completed.toString()}
-						</span>
+					<StyledListItem key={todo.id}>
+						<StyledSpan
+							id={todo.id}
+							onClick={this.onTodoClicked}
+							completed={todo.completed}>
+							{todo.value}
+						</StyledSpan>
+						{/* <span>{todo.completed.toString()}</span> */}
 						<button id={todo.id} onClick={this.onDeleteTodoClicked}>
 							delete
 						</button>
-					</li>
+					</StyledListItem>
 				))}
 			</ul>
 		);
