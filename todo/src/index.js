@@ -1,6 +1,7 @@
 import React from 'react';
 import App from './App';
 import ReactDOM from 'react-dom';
+import uuid from 'uuid';
 
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -11,15 +12,15 @@ import { Provider } from 'react-redux';
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_COMPLETED = 'TOGGLE_COMPLETED';
 
-const testData = [
-	{
-		value: 'finish main goal',
-		completed: false,
-	},
-];
+// const testData = [
+// 	{
+// 		value: 'finish main goal',
+// 		completed: false,
+// 	},
+// ];
 
 // STEP 3: BUILD ONE REDUCER PER STATE SLICE
-function todosReducer(state = testData, action) {
+function todosReducer(state = [], action) {
 	switch (action.type) {
 		case ADD_TODO:
 			return [...state, action.payload];
@@ -58,13 +59,13 @@ ReactDOM.render(
 export function addTodo(todo) {
 	return {
 		type: ADD_TODO,
-		payload: { value: todo, completed: false },
+		payload: { id: uuid(), value: todo, completed: false },
 	};
 }
 
-export function toggleCompleted(value) {
+export function toggleCompleted(id) {
 	return {
 		type: TOGGLE_COMPLETED,
-		payload: value,
+		payload: id,
 	};
 }
